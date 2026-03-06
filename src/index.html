@@ -11,6 +11,73 @@
 </head>
 
 <body>
+
+    <!-- popUp -->
+    <div id="popUp" class="hidden">
+        <div class="fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center bg-[#1c1c1d66]">
+            <div class="bg-[#FFFFFF] w-[35rem] shadow-2xl rounded-xl">
+
+                <div class=" p-4  space-y-4">
+
+
+                    <div class="space-y-4">
+                        <h1 class="text-[#000000] font-semibold text-2xl ">Fix broken image uploads</h1>
+
+                        <div class="flex gap-2">
+                            <button class="bg-[#00A96E] text-white font-sm px-2 py-1 rounded-2xl w-[5rem]">
+                                Opened</button>
+                            <div class="flex gap-2.5">
+                                <div class="flex items-center gap-1">
+                                    <div class="w-1 h-1 rounded-full bg-[#64748B]"></div>
+                                    <p class="text-[#64748B] text-sm">Opened by Fahim Ahmed</p>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <div class="w-1 h-1 rounded-full bg-[#64748B]"></div>
+                                    <p class="text-[#64748B] text-sm">22/02/2026</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
+                                class="ri-bug-line"></i> BUG</button>
+                        <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
+                            <img width="18px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                            <button class=" text-[#D97706] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
+                        </div>
+                    </div>
+
+                    <p class="text-[#64748B] text-xl">The navigation menu doesn't collapse properly on mobile devices.
+                        Need to fix the responsive behavior.</p>
+
+                    <div class="bg-[#F8FAFC]">
+                        <div class="flex items-center justify-between w-[60%] p-4">
+                            <div class="">
+                                <h1 class="text-[#64748B]">Assignee:</h1>
+                                <p class="text-[#1F2937] font-semibold text-xl mt-2">Fahim Ahmed</p>
+                            </div>
+
+                            <div class="">
+                                <h1 class="text-[#64748B]">Priority:</h1>
+                                <button class="bg-[#00A96E] text-white font-sm px-2 py-1 rounded-2xl w-[5rem] mt-2">
+                                    High</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button class="bg-[#4A00FF] cursor-pointer text-white font-sm px-2 py-3 rounded-sm w-[5rem] mt-2">
+                            Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- nav -->
     <header class="w-full p-4">
         <div class="flex items-center justify-between w-[90%] mx-auto ">
 
@@ -37,13 +104,18 @@
         </div>
     </header>
 
+
     <main class="flex  justify-center h-dvh bg-[#F8FAFC]">
+
         <div class="w-[80%] ">
+            <!-- mainTab -->
             <div class="mt-14 bg-[#FFFFFF]  py-6 rounded-xl px-4">
-                <button class="bg-[#4A00FF] text-white px-2 py-1 rounded w-[5rem]">All</button>
-                <button class="bg-[#4A00FF] text-white px-2 py-1 rounded w-[5rem]">Open</button>
-                <button class="bg-[#4A00FF] text-white px-2 py-1 rounded w-[5rem]">Closed</button>
+                <button class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">All</button>
+                <button class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Open</button>
+                <button class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Closed</button>
             </div>
+            
+            <!-- issueTab -->
             <div class="mt-4 bg-[#FFFFFF] flex items-center  justify-between pt-6 pb-4 rounded-t-xl px-4">
                 <div class="flex items-center gap-2">
                     <div class="">
@@ -67,12 +139,13 @@
                 </div>
             </div>
 
-
+            <!-- cartDiv -->
             <div class=" bg-[#FBFBFB]  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center  p-6">
-                
+
+                <!-- cart -->
                 <div class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm">
                     <div class="h-1.5 w-full bg-[#00A96E] rounded-t-xl"></div>
-                    
+
 
                     <div class=" p-4  space-y-4">
                         <div class="flex items-center justify-between">
@@ -90,21 +163,21 @@
                         <div class="flex gap-2">
                             <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
                                     class="ri-bug-line"></i> BUG</button>
-                            <div class="flex items-center bg-[#FEECEC] font-medium px-2 py-1 rounded-2xl w-fit">
-                                <img src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#EF4444] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
+                            <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
+                                <img width="18px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                                <button class=" text-[#D97706] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
                             </div>
                         </div>
                     </div>
 
-             
+
 
                     <div class="p-4 border-t border-gray-200">
                         <p class="text-[#64748B]">#1 by john_doe</p>
                         <p class="text-[#64748B] mt-2">1/15/2024</p>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </main>

@@ -8,7 +8,49 @@
 </head>
 
 <body class="bg-[#F8FAFC]">
-    
+    <div class="flex items-center justify-center h-screen shadow-2xl">
+        <div class="bg-[#FFFFFF] pb-4 w-[45vh]">
+
+            <div class="flex flex-col items-center text-center gap-4 pt-8">
+                <img src="./assets/github-logo.png" alt="github-logo.png">
+                <div class="text">
+                    <p class="text-[#000000] font-semibold text-2xl">GitHub Issues Tracker</p>
+                    <h1 class="text-[#64748B]">Sign in to manage your issues</h1>
+                </div>
+            </div>
+
+            <form class="mt-8 px-4 space-y-4">
+                <div class="flex flex-col ">
+                    <label for="username" class="text-[#1F2937] font-medium ">Username</label>
+                    <input type="text" placeholder="Enter Username" class="border border-gray-200 mt-2 p-2 rounded-md ">
+                    <p class="text-[#4A00FF]">Default: admin</p>
+                </div>
+                <div class="flex flex-col ">
+                    <label for="Password" class="text-[#1F2937] font-medium ">Password</label>
+                    <input type="text" placeholder="Enter Username" class="border border-gray-200 mt-2 p-2 rounded-md ">
+                    <p class="text-[#4A00FF]">Default: admin123</p>
+                </div>
+
+                <button  class="bg-[#4A00FF] w-full rounded-md py-2 text-white font-semibold"><a href="./index.html">Sign In</a></button>
+
+                <div class="flex items-center my-4  gap-1">
+                    <div class="h-0.5 bg-gray-200 w-[48%]"></div>
+                    <p class="text-[#1F2937] font-semibold">OR</p>
+                    <div class="h-0.5 bg-gray-200 w-[48%]"></div>
+                </div>
+            </form>
+
+            <div class="flex flex-col items-center   px-4 gap-2">
+                <h1>Demo Credentials:</h1>
+                <div class="bg-[#F8FAFC] w-full py-4 flex flex-col items-center ">
+                    <div class="">
+                        <h1><span class="text-black font-medium">Username:</span> admin</h1>
+                        <h1><span class="text-black font-medium">Password:</span> admin123</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

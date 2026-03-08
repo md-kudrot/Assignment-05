@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="input.css">
 
     <!-- icon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
@@ -115,12 +116,12 @@
         <div class="w-[80%] ">
             <!-- mainTab -->
             <div class="mt-14 bg-[#FFFFFF]  py-6 rounded-xl px-4">
-                <button onclick="renderCartData(allCart)"
-                    class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">All</button>
-                <button onclick="renderOpenCart(openArr)"
-                    class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Open</button>
-                <button onclick="renderCloseCart(closeArr)"
-                    class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Closed</button>
+                <button id="all-btn" onclick="renderCartData(allCart); toggleFunc(1)"
+                    class=" active-btn">All</button>
+                <button id="open-btn" onclick="renderOpenCart(openArr); toggleFunc(2)"
+                    class=" disabled-btm">Open</button>
+                <button id="close-btn" onclick="renderCloseCart(closeArr); toggleFunc(3)"
+                    class="disabled-btm">Closed</button>
             </div>
 
             <!-- issueTab -->
@@ -139,7 +140,7 @@
                 <div class="flex gap-2.5">
                     <div class="flex items-center gap-1">
                         <div class="w-3 h-3 rounded-full bg-[#00A96E]"></div>
-                        <p class="font-medium text-sm">Open</p>
+                        <p class="font-medium text-sm">Open </p>
                     </div>
                     <div class="flex items-center gap-1">
                         <div class="w-3 h-3 rounded-full bg-[#A855F7]"></div>

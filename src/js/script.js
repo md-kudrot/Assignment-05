@@ -1,6 +1,10 @@
 const cartContainar = document.getElementById("cartContainar")
 const popUpDiv = document.getElementById("popUpDiv")
 
+const allBtn = document.getElementById("all-btn")
+const openBtn = document.getElementById("open-btn")
+const closeBtn = document.getElementById("close-btn")
+
 const allCart = []
 const openArr = [];
 const closeArr = [];
@@ -28,7 +32,6 @@ async function cartData() {
     })
 
 }
-
 
 
 function renderCartData(dataArr) {
@@ -65,8 +68,8 @@ function renderCartData(dataArr) {
                             <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
                                     class="ri-bug-line"></i> BUG</button>
                             <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                                <img width="18px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
+                                <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
                             </div>
                         </div>
                     </div>
@@ -117,8 +120,8 @@ function renderOpenCart(openArr) {
                             <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
                                     class="ri-bug-line"></i> BUG</button>
                             <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                                <img width="18px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
+                                <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
                             </div>
                         </div>
                     </div>
@@ -169,8 +172,8 @@ function renderCloseCart(dataArr) {
                             <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
                                     class="ri-bug-line"></i> BUG</button>
                             <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                                <img width="18px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
+                               <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
                             </div>
                         </div>
                     </div>
@@ -230,8 +233,8 @@ function showPopUp(id) {
                         <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
                                 class="ri-bug-line"></i> BUG</button>
                         <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                            <img width="18px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                            <button class=" text-[#D97706] font-medium px-2 py-1 rounded-2xl ">Help Wanted</button>
+                           <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
                         </div>
                     </div>
 
@@ -267,6 +270,36 @@ function showPopUp(id) {
 function closePopUp() {
     popUpDiv.classList.add("hidden")
 }
+
+
+function toggleFunc(id) {
+    // console.log(id)
+    allBtn.classList.remove('active-btn')
+    openBtn.classList.remove('active-btn')
+    closeBtn.classList.remove('active-btn')
+
+    allBtn.classList.add('disabled-btm')
+    openBtn.classList.add('disabled-btm')
+    closeBtn.classList.add('disabled-btm')
+
+
+    if (id === 1) {
+        allBtn.classList.remove('disabled-btm')
+        allBtn.classList.add('active-btn')
+    } else if (id === 2) {
+        openBtn.classList.remove('disabled-btm')
+        openBtn.classList.add('active-btn')
+
+    }
+    else if (id === 3) {
+        closeBtn.classList.remove('disabled-btm')
+        closeBtn.classList.add('active-btn')
+
+    }
+}
+
+
+
 
 /*
 {

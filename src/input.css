@@ -3,3 +3,22 @@
 button {
      cursor: pointer;
 }
+
+.active-btn {
+  background-color: #4A00FF;
+  border: 1px solid #D1D5DB; /* Tailwind gray-300 */
+  color: white;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem; /* py-1 px-2 */
+  border-radius: 0.25rem; /* rounded */
+  width: 5rem;
+}
+
+.disabled-btm {
+  border: 1px solid #D1D5DB; /* gray-300 */
+  color: #64748B;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem; /* py-1 px-2 */
+  border-radius: 0.25rem; /* rounded */
+  width: 5rem;
+}

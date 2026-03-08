@@ -11,7 +11,7 @@ signInBtn.addEventListener("click", (event) => {
     if (userNameInput.value === "admin" && passwordInput.value === "admin123") {
         // console.log("ok")
 
-        window.location.href = 'index.html';
+        window.location.href = 'main.html';
 
     } else {
         userNameInput.value = " "

@@ -1,5 +1,6 @@
 const cartContainar = document.getElementById("cartContainar")
 const popUpDiv = document.getElementById("popUpDiv")
+const issues = document.getElementById("issues")
 
 const allBtn = document.getElementById("all-btn")
 const openBtn = document.getElementById("open-btn")
@@ -49,7 +50,7 @@ function renderCartData(dataArr) {
         // console.log(element)
         div.innerHTML = `
         <div onclick="showPopUp(${element.id})" class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm h-[24rem] cursor-pointer">
-                    <div class="h-1.5 w-full  ${element.priority === "low" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
+                    <div class="h-1.5 w-full  ${element.status === "closed" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
 
 
                     <div class=" p-4  space-y-4">
@@ -101,7 +102,7 @@ function renderOpenCart(openArr) {
         // console.log(element)
         div.innerHTML = `
         <div onclick="showPopUp(${element.id})" class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm h-[24rem] cursor-pointer">
-                    <div class="h-1.5 w-full  ${element.priority === "low" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
+                    <div class="h-1.5 w-full  ${element.status === "closed" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
 
 
                     <div class=" p-4  space-y-4">
@@ -153,7 +154,7 @@ function renderCloseCart(dataArr) {
         // console.log(element)
         div.innerHTML = `
         <div onclick="showPopUp(${element.id})" class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm h-[24rem] cursor-pointer">
-                    <div class="h-1.5 w-full  ${element.priority === "low" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
+                    <div class="h-1.5 w-full  ${element.status === "closed" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
 
 
                     <div class=" p-4  space-y-4">
@@ -286,17 +287,22 @@ function toggleFunc(id) {
     if (id === 1) {
         allBtn.classList.remove('disabled-btm')
         allBtn.classList.add('active-btn')
+        issues.innerText = `${allCart.length} Issues`
     } else if (id === 2) {
         openBtn.classList.remove('disabled-btm')
         openBtn.classList.add('active-btn')
+        issues.innerText = `${openArr.length} Issues`
 
     }
     else if (id === 3) {
         closeBtn.classList.remove('disabled-btm')
         closeBtn.classList.add('active-btn')
+        issues.innerText = `${closeArr.length} Issues`
 
     }
 }
+
+
 
 
 
@@ -310,7 +316,7 @@ function toggleFunc(id) {
     "labels": [
         "bug"
     ],
-    "priority": "low",
+    priority: "low",
     "author": "console_carol",
     "assignee": "",
     "createdAt": "2024-02-09T14:20:00Z",

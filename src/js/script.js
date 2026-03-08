@@ -1,6 +1,7 @@
 const cartContainar = document.getElementById("cartContainar")
 const popUpDiv = document.getElementById("popUpDiv")
 const issues = document.getElementById("issues")
+const input = document.getElementById("input")
 
 const allBtn = document.getElementById("all-btn")
 const openBtn = document.getElementById("open-btn")
@@ -9,6 +10,7 @@ const closeBtn = document.getElementById("close-btn")
 const allCart = []
 const openArr = [];
 const closeArr = [];
+
 
 
 async function cartData() {
@@ -321,18 +323,116 @@ function toggleFunc(id) {
         allBtn.classList.remove('disabled-btm')
         allBtn.classList.add('active-btn')
         issues.innerText = `${allCart.length} Issues`
+        input.value = " "
     } else if (id === 2) {
         openBtn.classList.remove('disabled-btm')
         openBtn.classList.add('active-btn')
         issues.innerText = `${openArr.length} Issues`
+        input.value = " "
 
     }
     else if (id === 3) {
         closeBtn.classList.remove('disabled-btm')
         closeBtn.classList.add('active-btn')
         issues.innerText = `${closeArr.length} Issues`
-
+        input.value = " "
     }
+}
+
+function searchFunc() {
+    // console.log(input.value)
+    showSearchItem(input.value)
+}
+
+async function showSearchItem(searchText) {
+    if (!searchText) {
+        return;
+    }
+
+    const api = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
+    const searchItem = await api.json()
+    const searchItemData = searchItem.data
+    console.log(searchItemData.length)
+
+    if (searchItemData.length === 0) {
+        issues.innerText = `${searchItemData.length} Issues`
+        cartContainar.innerHTML = ' '
+        const div = document.createElement("div")
+        div.className = 'bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm p-4 text-center'
+        div.innerHTML = `
+        <h1 class="text-[#000000] font-semibold text-xl ">No results found for "${searchText}"</h1>
+         `
+        cartContainar.appendChild(div)
+        input.value = " "
+
+    } else {
+        issues.innerText = `${searchItemData.length} Issues`
+
+        cartContainar.innerHTML = ' '
+        // console.log(dataArr)
+        searchItemData.forEach(element => {
+
+            // date formating
+            const createdDate = element.createdAt
+            const formattedDate = new Date(createdDate).toLocaleDateString('en-US')
+
+
+            const labelsArr = element.labels
+
+            const labelBtn1 = labelsArr[0]
+                ? `<span class="inline-flex items-center bg-[#FEECEC] text-[#EF4444] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <i class="ri-bug-line mr-1"></i> ${labelsArr[0]}
+             </span>`
+                : "";
+
+            const labelBtn2 = labelsArr[1]
+                ? `<span class="flex justify-center gap-1 items-center bg-[#FDE68A] text-[#D97706] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <img class="w-4 h-4 mr-1" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                ${labelsArr[1]}
+             </span>`
+                : "";
+
+
+            const div = document.createElement("div")
+            div.className = 'bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm'
+            // console.log(element)
+            div.innerHTML = `
+        <div onclick="showPopUp(${element.id})" class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm h-[24rem] cursor-pointer">
+                    <div class="h-1.5 w-full  ${element.status === "closed" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
+
+
+                    <div class=" p-4  space-y-4">
+                        <div class="flex items-center justify-between">
+                            <img src=" ${element.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}" alt="logo">
+                            <button
+                                class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]">${element.priority}</button>
+                        </div>
+
+                        <div class="">
+                            <h1 class="text-[#000000] font-semibold text-xl ">${element.title}</h1>
+                            <p class="text-[#64748B] mt-2 line-clamp-2">${element.description}</p>
+                        </div>
+
+                        <div class="flex gap-2">
+                            ${labelBtn1}
+                           ${labelBtn2}
+                      
+                        </div>
+                    </div>
+
+
+
+                    <div class="p-4 border-t border-gray-200">
+                        <p class="text-[#64748B]">#${element.id} ${element.author}</p>
+                        <p class="text-[#64748B] mt-2">${formattedDate}</p>
+                    </div>
+                </div>
+        `
+            cartContainar.appendChild(div)
+        });
+    }
+
+
 }
 
 

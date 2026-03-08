@@ -15,8 +15,9 @@
 <body>
 
     <!-- popUp -->
-    <div id="popUp" class="hidden">
-        <div class="fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center bg-[#1c1c1d66]">
+    <div id="popUpDiv" class="hidden">
+
+        <!-- <div class="fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center bg-[#1c1c1d66]">
             <div class="bg-[#FFFFFF] w-[35rem] shadow-2xl rounded-xl">
 
                 <div class=" p-4  space-y-4">
@@ -70,13 +71,15 @@
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <button class="bg-[#4A00FF] cursor-pointer text-white font-sm px-2 py-3 rounded-sm w-[5rem] mt-2">
+                        <button
+                            class="bg-[#4A00FF] cursor-pointer text-white font-sm px-2 py-3 rounded-sm w-[5rem] mt-2">
                             Close</button>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </div> -->
+
     </div>
 
     <!-- nav -->
@@ -112,13 +115,17 @@
         <div class="w-[80%] ">
             <!-- mainTab -->
             <div class="mt-14 bg-[#FFFFFF]  py-6 rounded-xl px-4">
-                <button class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">All</button>
-                <button class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Open</button>
-                <button class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Closed</button>
+                <button onclick="renderCartData(allCart)"
+                    class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">All</button>
+                <button onclick="renderOpenCart(openArr)"
+                    class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Open</button>
+                <button onclick="renderCloseCart(closeArr)"
+                    class="bg-[#4A00FF] border border-gray-300 text-white px-2 py-1 rounded w-[5rem]">Closed</button>
             </div>
-            
+
             <!-- issueTab -->
-            <div class="mt-4 bg-[#FFFFFF] flex flex-wrap gap-4 items-center  justify-between pt-6 pb-4 rounded-t-xl px-4">
+            <div
+                class="mt-4 bg-[#FFFFFF] flex flex-wrap gap-4 items-center  justify-between pt-6 pb-4 rounded-t-xl px-4">
                 <div class="flex items-center gap-2">
                     <div class="">
                         <img src="./assets/Aperture.png.png" alt="">
@@ -142,7 +149,8 @@
             </div>
 
             <!-- cartDiv -->
-            <div id="cartContainar" class=" bg-[#FBFBFB]  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center  p-6">
+            <div id="cartContainar"
+                class=" bg-[#FBFBFB]  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center  p-6">
                 <!-- cart -->
                 <!-- <div class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm">
                     <div class="h-1.5 w-full bg-[#00A96E] rounded-t-xl"></div>

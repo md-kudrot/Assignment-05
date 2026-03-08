@@ -44,38 +44,45 @@ function renderCartData(dataArr) {
         const createdDate = element.createdAt
         const formattedDate = new Date(createdDate).toLocaleDateString('en-US')
 
+        const labelsArr = element.labels
+
+        const labelBtn1 = labelsArr[0]
+            ? `<span class="inline-flex items-center bg-[#FEECEC] text-[#EF4444] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <i class="ri-bug-line mr-1"></i> ${labelsArr[0]}
+             </span>`
+            : "";
+
+        const labelBtn2 = labelsArr[1]
+            ? `<span class="flex justify-center gap-1 items-center bg-[#FDE68A] text-[#D97706] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <img class="w-4 h-4 mr-1" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                ${labelsArr[1]}
+             </span>`
+            : "";
 
         const div = document.createElement("div")
-        div.className = 'bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm'
-        // console.log(element)
+        div.className = 'bg-[#FFFFFF] shadow-2xl rounded-t-xl rounded-b-sm'
+
         div.innerHTML = `
-        <div onclick="showPopUp(${element.id})" class="bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm h-[24rem] cursor-pointer">
-                    <div class="h-1.5 w-full  ${element.status === "closed" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
+        <div onclick="showPopUp(${element.id})" class="bg-[#FFFFFF] shadow-2xl rounded-t-xl rounded-b-sm h-[24rem] cursor-pointer">
+                    <div class="h-1.5 w-full ${element.status === "closed" ? "bg-[#A855F7]" : "bg-[#00A96E]"} rounded-t-xl"></div>
 
-
-                    <div class=" p-4  space-y-4">
+                    <div class="p-4 space-y-4">
                         <div class="flex items-center justify-between">
-                            <img src=" ${element.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}" alt="logo">
+                            <img src="${element.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}" alt="logo">
                             <button
                                 class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]">${element.priority}</button>
                         </div>
 
-                        <div class="">
-                            <h1 class="text-[#000000] font-semibold text-xl ">${element.title}</h1>
+                        <div>
+                            <h1 class="text-[#000000] font-semibold text-xl">${element.title}</h1>
                             <p class="text-[#64748B] mt-2 line-clamp-2">${element.description}</p>
                         </div>
 
-                        <div class="flex gap-2">
-                            <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
-                                    class="ri-bug-line"></i> BUG</button>
-                            <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                                <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
-                            </div>
+                        <div class="flex gap-2 items-center flex-wrap">
+                            ${labelBtn1}
+                            ${labelBtn2}
                         </div>
                     </div>
-
-
 
                     <div class="p-4 border-t border-gray-200">
                         <p class="text-[#64748B]">#${element.id} ${element.author}</p>
@@ -96,6 +103,21 @@ function renderOpenCart(openArr) {
         const createdDate = element.createdAt
         const formattedDate = new Date(createdDate).toLocaleDateString('en-US')
 
+        const labelsArr = element.labels
+
+        const labelBtn1 = labelsArr[0]
+            ? `<span class="inline-flex items-center bg-[#FEECEC] text-[#EF4444] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <i class="ri-bug-line mr-1"></i> ${labelsArr[0]}
+             </span>`
+            : "";
+
+        const labelBtn2 = labelsArr[1]
+            ? `<span class="flex justify-center gap-1 items-center bg-[#FDE68A] text-[#D97706] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <img class="w-4 h-4 mr-1" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                ${labelsArr[1]}
+             </span>`
+            : "";
+
 
         const div = document.createElement("div")
         div.className = 'bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm'
@@ -118,12 +140,8 @@ function renderOpenCart(openArr) {
                         </div>
 
                         <div class="flex gap-2">
-                            <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
-                                    class="ri-bug-line"></i> BUG</button>
-                            <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                                <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
-                            </div>
+                           ${labelBtn1}
+                           ${labelBtn2}
                         </div>
                     </div>
 
@@ -149,6 +167,22 @@ function renderCloseCart(dataArr) {
         const formattedDate = new Date(createdDate).toLocaleDateString('en-US')
 
 
+        const labelsArr = element.labels
+
+        const labelBtn1 = labelsArr[0]
+            ? `<span class="inline-flex items-center bg-[#FEECEC] text-[#EF4444] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <i class="ri-bug-line mr-1"></i> ${labelsArr[0]}
+             </span>`
+            : "";
+
+        const labelBtn2 = labelsArr[1]
+            ? `<span class="flex justify-center gap-1 items-center bg-[#FDE68A] text-[#D97706] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <img class="w-4 h-4 mr-1" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                ${labelsArr[1]}
+             </span>`
+            : "";
+
+
         const div = document.createElement("div")
         div.className = 'bg-[#FFFFFF]  shadow-2xl rounded-t-xl rounded-b-sm'
         // console.log(element)
@@ -170,12 +204,9 @@ function renderCloseCart(dataArr) {
                         </div>
 
                         <div class="flex gap-2">
-                            <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
-                                    class="ri-bug-line"></i> BUG</button>
-                            <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                               <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
-                            </div>
+                            ${labelBtn1}
+                           ${labelBtn2}
+                      
                         </div>
                     </div>
 
@@ -191,10 +222,12 @@ function renderCloseCart(dataArr) {
     });
 }
 
-function showPopUp(id) {
-    const clickedCart = allCart.find(item => item.id === id)
+async function showPopUp(id) {
+    // const clickedCart = allCart.find(item => item.id === id)
+    const api = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+    const data = await api.json()
+    const clickedCart = data.data
     console.log(clickedCart)
-
     popUpDiv.classList.remove("hidden")
 
     // date formating

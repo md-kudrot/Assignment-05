@@ -10,10 +10,14 @@
     <!-- icon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 
+    <!-- daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
     <script src="./js/script.js" defer></script>
 </head>
 
 <body>
+
 
     <!-- popUp -->
     <div id="popUpDiv" class="hidden">
@@ -96,7 +100,8 @@
 
                 <div class="flex items-center gap-2 border border-gray-200 px-3 py-1 rounded">
                     <i onclick="searchFunc()" class="ri-search-line cursor-pointer"></i>
-                    <input id="input" type="text" placeholder="Search issues..." class="focus:outline-none">
+                    <input id="input" type="text" placeholder="Search issues..."
+                        class="focus:outline-none border border-none">
                 </div>
 
                 <div class="">
@@ -116,8 +121,7 @@
         <div class="w-[80%] ">
             <!-- mainTab -->
             <div class="mt-14 bg-[#FFFFFF]  py-6 rounded-xl px-4">
-                <button id="all-btn" onclick="renderCartData(allCart); toggleFunc(1)"
-                    class=" active-btn">All</button>
+                <button id="all-btn" onclick="renderCartData(allCart); toggleFunc(1)" class=" active-btn">All</button>
                 <button id="open-btn" onclick="renderOpenCart(openArr); toggleFunc(2)"
                     class=" disabled-btm">Open</button>
                 <button id="close-btn" onclick="renderCloseCart(closeArr); toggleFunc(3)"
@@ -150,6 +154,17 @@
             </div>
 
             <!-- cartDiv -->
+
+            <div id="spinner" class="hidden py-12  items-center justify-center">
+                <span class="loading loading-infinity loading-xs"></span>
+                <span class="loading loading-infinity loading-sm"></span>
+                <span class="loading loading-infinity loading-md"></span>
+                <span class="loading loading-infinity loading-lg"></span>
+                <span class="loading loading-infinity loading-xl"></span>
+            </div>
+
+
+
             <div id="cartContainar"
                 class=" bg-[#FBFBFB]  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center  p-6">
                 <!-- cart -->
@@ -187,6 +202,7 @@
                         <p class="text-[#64748B] mt-2">1/15/2024</p>
                     </div>
                 </div> -->
+
 
             </div>
         </div>

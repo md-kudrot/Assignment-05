@@ -14,8 +14,11 @@ const closeArr = [];
 
 
 async function cartData() {
+    loadingSpinner(true)
+
     const api = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const dataObj = await api.json()
+
 
     renderCartData(dataObj.data)
     dataObj.data.forEach(item => {
@@ -33,6 +36,9 @@ async function cartData() {
 
         closeArr.push(item)
     })
+
+    loadingSpinner(false)
+
 
 }
 
@@ -226,6 +232,7 @@ function renderCloseCart(dataArr) {
 
 async function showPopUp(id) {
     // const clickedCart = allCart.find(item => item.id === id)
+    loadingSpinner(true)
     const api = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
     const data = await api.json()
     const clickedCart = data.data
@@ -235,6 +242,23 @@ async function showPopUp(id) {
     // date formating
     const createdDate = clickedCart.createdAt
     const formattedDate = new Date(createdDate).toLocaleDateString('en-US')
+
+
+    const labelsArr = clickedCart.labels
+
+    const labelBtn1 = labelsArr[0]
+        ? `<span class="inline-flex items-center bg-[#FEECEC] text-[#EF4444] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <i class="ri-bug-line mr-1"></i> ${labelsArr[0]}
+             </span>`
+        : "";
+
+    const labelBtn2 = labelsArr[1]
+        ? `<span class="flex justify-center gap-1 items-center bg-[#FDE68A] text-[#D97706] font-medium px-3 py-1.5 rounded-2xl text-sm leading-none">
+                <img class="w-4 h-4 mr-1" src="./assets/Lifebuoy.png" alt="Lifebuoy">
+                ${labelsArr[1]}
+             </span>`
+        : "";
+
 
     const div = document.createElement("div")
     div.className = 'fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center bg-[#1c1c1d66]'
@@ -266,12 +290,8 @@ async function showPopUp(id) {
                     </div>
 
                     <div class="flex gap-2">
-                        <button class="bg-[#FEECEC] text-[#EF4444] font-medium px-2 py-1 rounded-2xl w-[5rem]"><i
-                                class="ri-bug-line"></i> BUG</button>
-                        <div class="flex items-center bg-[#FDE68A] font-medium px-2 py-1 rounded-2xl w-fit">
-                           <img width="16px" src="./assets/Lifebuoy.png" alt="Lifebuoy">
-                                <button class=" text-[#D97706] font-medium ml-1 py-1 rounded-2xl  ">Help Wanted</button>
-                        </div>
+                          ${labelBtn1}
+                           ${labelBtn2}
                     </div>
 
                     <p class="text-[#64748B] text-xl">${clickedCart.description}</p>
@@ -301,6 +321,7 @@ async function showPopUp(id) {
             </div>
     `
     popUpDiv.appendChild(div)
+    loadingSpinner(false)
 }
 
 function closePopUp() {
@@ -341,10 +362,11 @@ function toggleFunc(id) {
 
 function searchFunc() {
     // console.log(input.value)
-    showSearchItem(input.value)
+    showSearchItem(input.value.trim())
 }
 
 async function showSearchItem(searchText) {
+    loadingSpinner(true)
     if (!searchText) {
         return;
     }
@@ -352,9 +374,10 @@ async function showSearchItem(searchText) {
     const api = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
     const searchItem = await api.json()
     const searchItemData = searchItem.data
-    console.log(searchItemData.length)
+    // console.log(searchItemData.length)
 
     if (searchItemData.length === 0) {
+        loadingSpinner(false)
         issues.innerText = `${searchItemData.length} Issues`
         cartContainar.innerHTML = ' '
         const div = document.createElement("div")
@@ -432,8 +455,31 @@ async function showSearchItem(searchText) {
         });
     }
 
+    loadingSpinner(false)
+
 
 }
+
+function loadingSpinner(status) {
+
+    if (status == true) {
+        document.getElementById("spinner")
+            .classList.remove("hidden")
+        document.getElementById("spinner")
+            .classList.add("flex")
+        cartContainar.classList.add("hidden")
+
+
+    } else {
+
+        document.getElementById("spinner")
+            .classList.remove("flex")
+        document.getElementById("spinner")
+            .classList.add("hidden")
+        cartContainar.classList.remove("hidden")
+    }
+}
+
 
 
 

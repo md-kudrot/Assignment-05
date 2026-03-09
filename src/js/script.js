@@ -103,6 +103,7 @@ function renderCartData(dataArr) {
 }
 
 function renderOpenCart(openArr) {
+    loadingSpinner(true)
     cartContainar.innerHTML = ' '
     // console.log(openArr)
     openArr.forEach(element => {
@@ -163,9 +164,12 @@ function renderOpenCart(openArr) {
         `
         cartContainar.appendChild(div)
     });
+
+    loadingSpinner(false)
 }
 
 function renderCloseCart(dataArr) {
+    loadingSpinner(true)
     cartContainar.innerHTML = ' '
     // console.log(dataArr)
     dataArr.forEach(element => {
@@ -228,6 +232,7 @@ function renderCloseCart(dataArr) {
         `
         cartContainar.appendChild(div)
     });
+    loadingSpinner(false)
 }
 
 async function showPopUp(id) {
@@ -236,7 +241,7 @@ async function showPopUp(id) {
     const api = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
     const data = await api.json()
     const clickedCart = data.data
-    console.log(clickedCart)
+    // console.log(clickedCart)
     popUpDiv.classList.remove("hidden")
 
     // date formating
@@ -259,9 +264,9 @@ async function showPopUp(id) {
              </span>`
         : "";
 
-
+    popUpDiv.innerHTML = " "
     const div = document.createElement("div")
-    div.className = 'fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center bg-[#1c1c1d66]'
+    div.className = 'fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center bg-[#1c1c1d66] p-4'
     div.innerHTML = `
                     <div class="bg-[#FFFFFF] w-[35rem] shadow-2xl rounded-xl">
 
@@ -368,6 +373,7 @@ function searchFunc() {
 async function showSearchItem(searchText) {
     loadingSpinner(true)
     if (!searchText) {
+        loadingSpinner(false)
         return;
     }
 
